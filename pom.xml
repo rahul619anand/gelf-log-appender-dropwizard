@@ -8,22 +8,7 @@
   <version>0.5</version>
   <name>logback-gelf</name>
 
-  <parent>
-    <groupId>org.sonatype.oss</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>7</version>
-  </parent>
-
   <description>GELF Appender for logback. Use this appender to log messages to a graylog2 server via GELF messages.</description>
-
-
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
 
 	<distributionManagement>
 		<snapshotRepository>

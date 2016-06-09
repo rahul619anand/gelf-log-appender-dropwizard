@@ -13,3 +13,4 @@ release.properties
 /lein
 /.nrepl-port
 /.lein-failures
+/bin/
