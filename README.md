@@ -11,13 +11,17 @@ Dependency information
 
 Latest version:
 
-```xml
-<dependency>
-  <groupId>com.travelguru</groupId>
-  <artifactId>logback-gelf</artifactId>
-  <version>0.5</version>
-</dependency>
-```
+Gradle 
+
+	compile "com.travelguru:logback-gelf:0.6"
+	
+Maven 
+
+	<dependency>
+	  <groupId>com.travelguru</groupId>
+	  <artifactId>logback-gelf</artifactId>
+	  <version>0.6</version>
+	</dependency>
 
 Features
 --------

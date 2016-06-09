@@ -5,19 +5,11 @@
   <groupId>com.travelguru</groupId>
   <artifactId>logback-gelf</artifactId>
   <packaging>jar</packaging>
-  <version>0.5</version>
+  <version>0.6</version>
   <name>logback-gelf</name>
-
+	<url>http://maven.apache.org</url>
   <description>GELF Appender for logback. Use this appender to log messages to a graylog2 server via GELF messages.</description>
 
-	<distributionManagement>
-		<snapshotRepository>
-			<id>nexus</id>
-			<url>http://tools.travelguru.com/nexus/content/repositories/snapshots/</url>
-		</snapshotRepository>
-		<!-- <repository> <id>nexus</id> <url>http://tools.travelguru.com/nexus/content/repositories/releases/</url> 
-			</repository> -->
-	</distributionManagement>
   <repositories>
   <repository>
 			<id>central</id>
@@ -32,7 +24,16 @@
 			<url>http://tools.travelguru.com/nexus/content/repositories/thirdparty</url>
 		</repository>
   </repositories>
-
+<distributionManagement>
+		<snapshotRepository>
+			<id>nexus</id>
+			<url>http://tools.travelguru.com/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>nexus</id>
+			<url>http://tools.travelguru.com/nexus/content/repositories/releases/</url>
+		</repository>
+	</distributionManagement>
   <dependencies>
 		<dependency>
 			<groupId>io.dropwizard</groupId>
@@ -67,144 +68,20 @@
 		</dependency>
   </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>2.5</version>
-        <configuration>
-          <encoding>UTF-8</encoding>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>2.6</version>
-        <configuration>
-          <archive>
-            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-          </archive>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <version>2.5.4</version>
-        <extensions>true</extensions>
-        <executions>
-          <execution>
-            <id>bundle-manifest</id>
-            <phase>process-classes</phase>
-            <goals>
-              <goal>manifest</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+ <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-      <!-- Build helper maven plugin sets the parsedVersion.osgiVersion property -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.5</version>
-        <executions>
-          <execution>
-            <id>set-osgi-version</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>parse-version</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <!-- source maven plugin creates the source bundle and adds manifest -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>2.1.1</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <archive>
-            <manifestEntries>
-              <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
-              <Bundle-Name>${project.name}</Bundle-Name>
-              <Bundle-SymbolicName>${project.groupId}.${project.artifactId}.source</Bundle-SymbolicName>
-              <Bundle-Vendor>${organization.name}</Bundle-Vendor>
-              <Bundle-Version>${parsedVersion.osgiVersion}</Bundle-Version>
-              <Eclipse-SourceBundle>${project.groupId}.${project.artifactId};version="${parsedVersion.osgiVersion}";roots:="."</Eclipse-SourceBundle>
-            </manifestEntries>
-          </archive>
-        </configuration>
-      </plugin>
-
-    
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.3</version>
-        <configuration>
-          <failOnError>false</failOnError>
-        </configuration>
-      </plugin>
-
-    </plugins>
-
-  </build>
-
-  <profiles>
-    <profile>
-      <id>release-sign-artifacts</id>
-      <activation>
-        <property>
-          <name>performRelease</name>
-          <value>true</value>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
+ 
 
 </project>
