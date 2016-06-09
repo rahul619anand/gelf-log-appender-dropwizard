@@ -5,6 +5,8 @@ A [Logback](http://logback.qos.ch/) appender that encodes logs to
 [GELF](https://www.graylog.org/resources/gelf/) and transports them
 to [Graylog](https://www.graylog.org/) servers.
 
+Support for dropwizard logging.
+
 
 Dependency information
 -----------------------------------
