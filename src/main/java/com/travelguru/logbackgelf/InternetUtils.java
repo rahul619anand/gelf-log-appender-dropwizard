@@ -1,4 +1,4 @@
-package me.moocar.logbackgelf;
+package com.travelguru.logbackgelf;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;

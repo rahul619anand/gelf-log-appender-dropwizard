@@ -1,4 +1,4 @@
-package me.moocar.logbackgelf;
+package com.travelguru.logbackgelf;
 
 import ch.qos.logback.classic.PatternLayout;
 import ch.qos.logback.classic.spi.ILoggingEvent;

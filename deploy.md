@@ -51,7 +51,7 @@ login information in your `~/.m2/settings.xml`. Something like:
 1. Navigate to the [sonatype staging repositories](https://oss.sonatype.org/index.html#stagingRepositories)
 1. Login using your credentials
 1. Go to Staging Repositories page.
-1. Select a staging repository (memoocar)
+1. Select a staging repository 
 1. Click the Close button (with any reason, e.g "release")
 1. You might have to refresh to see the change
 1. Select and click release. Done!

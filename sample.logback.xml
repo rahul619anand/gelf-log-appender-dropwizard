@@ -1,10 +1,10 @@
 <configuration>
     <!--Use TCP instead of UDP-->
-    <appender name="GELF TCP APPENDER" class="me.moocar.logback.net.SocketEncoderAppender">
+    <appender name="GELF TCP APPENDER" class="com.travelguru.logback.net.SocketEncoderAppender">
         <remoteHost>somehost.com</remoteHost>
         <port>12201</port>
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-            <layout class="me.moocar.logbackgelf.GelfLayout">
+            <layout class="com.travelguru.logbackgelf.GelfLayout">
                 <!--An example of overwriting the short message pattern-->
                 <shortMessageLayout class="ch.qos.logback.classic.PatternLayout">
                     <pattern>%ex{short}%.100m</pattern>
@@ -22,7 +22,7 @@
                 <includeFullMDC>true</includeFullMDC>
                 <fieldType>requestId:long</fieldType>
                 <!--Facility is not officially supported in GELF anymore, but you can use staticAdditionalFields to do the same thing-->
-                <staticField class="me.moocar.logbackgelf.Field">
+                <staticField class="com.travelguru.logbackgelf.Field">
                   <key>_facility</key>
                   <value>GELF</value>
                 </staticField>

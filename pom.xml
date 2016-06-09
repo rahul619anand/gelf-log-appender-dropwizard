@@ -2,10 +2,10 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>me.moocar</groupId>
+  <groupId>com.travelguru</groupId>
   <artifactId>logback-gelf</artifactId>
   <packaging>jar</packaging>
-  <version>0.4-SNAPSHOT</version>
+  <version>0.5</version>
   <name>logback-gelf</name>
 
   <parent>
@@ -16,9 +16,6 @@
 
   <description>GELF Appender for logback. Use this appender to log messages to a graylog2 server via GELF messages.</description>
 
-  <url>https://github.com/Moocar/logback-gelf</url>
-
-  <inceptionYear>2011</inceptionYear>
 
   <licenses>
     <license>
@@ -28,29 +25,28 @@
     </license>
   </licenses>
 
-  <scm>
-    <connection>scm:git:git@github.com:Moocar/logback-gelf.git</connection>
-    <developerConnection>scm:git:git@github.com:Moocar/logback-gelf.git</developerConnection>
-    <url>git@github.com:Moocar/logback-gelf.git</url>
-  </scm>
 
-  <developers>
-    <developer>
-      <name>Anthony Marcar</name>
-      <email>anthony@moocar.me</email>
-    </developer>
-  </developers>
-
-  <!-- Required for clojure test depenencies -->
   <repositories>
-    <repository>
-      <id>clojars.org</id>
-      <url>http://clojars.org/repo</url>
-    </repository>
+  <repository>
+			<id>central</id>
+			<url>http://tools.travelguru.com/nexus/content/repositories/central/</url>
+		</repository>
+		<repository>
+			<id>travelguru-releases</id>
+			<url>http://tools.travelguru.com/nexus/content/repositories/releases/</url>
+		</repository>
+		<repository>
+			<id>thirdparty</id>
+			<url>http://tools.travelguru.com/nexus/content/repositories/thirdparty</url>
+		</repository>
   </repositories>
 
   <dependencies>
-
+		<dependency>
+			<groupId>io.dropwizard</groupId>
+			<artifactId>dropwizard-core</artifactId>
+			<version>0.9.2</version>
+		</dependency>
     <!-- Production dependencies -->
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -72,76 +68,11 @@
       <artifactId>socket-encoder-appender</artifactId>
       <version>0.1beta1</version>
     </dependency>
-
-    <!-- Clojure Test dependencies -->
     <dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>clojure</artifactId>
-      <version>1.7.0</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>core.async</artifactId>
-      <version>0.1.346.0-17112a-alpha</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>data.json</artifactId>
-      <version>0.2.6</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>data.xml</artifactId>
-      <version>0.0.8</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>test.check</artifactId>
-      <version>0.7.0</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>tools.nrepl</artifactId>
-      <version>0.2.10</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.stuartsierra</groupId>
-      <artifactId>component</artifactId>
-      <version>0.2.3</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!-- Java Test dependencies -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.powermock</groupId>
-        <artifactId>powermock-module-junit4</artifactId>
-        <version>1.6.2</version>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.powermock</groupId>
-        <artifactId>powermock-api-mockito</artifactId>
-        <version>1.6.2</version>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.mockito</groupId>
-        <artifactId>mockito-core</artifactId>
-        <version>1.10.19</version>
-        <scope>test</scope>
-    </dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.12.6</version>
+		</dependency>
   </dependencies>
 
   <build>
@@ -150,8 +81,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
       <plugin>
@@ -194,14 +125,6 @@
             </goals>
           </execution>
         </executions>
-        <configuration>
-          <instructions>
-            <!-- packages to export -->
-            <Export-Package>me.moocar.logbackgelf</Export-Package>
-            <!-- attach to Logback bundle as fragment -->
-            <Fragment-Host>ch.qos.logback.classic</Fragment-Host>
-          </instructions>
-        </configuration>
       </plugin>
 
       <!-- Build helper maven plugin sets the parsedVersion.osgiVersion property -->
@@ -248,30 +171,7 @@
         </configuration>
       </plugin>
 
-      <!-- Clojure plugin to allow testing in Clojure -->
-      <plugin>
-        <groupId>com.theoryinpractise</groupId>
-        <artifactId>clojure-maven-plugin</artifactId>
-        <version>1.7.1</version>
-        <extensions>true</extensions>
-        <configuration>
-          <runWithTests>true</runWithTests>
-          <testSourceDirectories>
-            <testSourceDirectory>src/test/clojure</testSourceDirectory>
-          </testSourceDirectories>
-        </configuration>
-        <executions>
-          <execution>
-            <id>clojure-test</id>
-            <phase>test</phase>
-            <goals>
-              <goal>test</goal>
-            </goals>
-          </execution>
-        </executions>
-
-      </plugin>
-
+    
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
