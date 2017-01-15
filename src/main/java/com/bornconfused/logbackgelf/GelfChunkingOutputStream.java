@@ -1,4 +1,4 @@
-package com.travelguru.logbackgelf;
+package com.bornconfused.logbackgelf;
 
 import java.io.IOException;
 import java.io.OutputStream;

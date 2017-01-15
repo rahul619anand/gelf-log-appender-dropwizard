@@ -1,4 +1,4 @@
-package com.travelguru.logbackgelf;
+package com.bornconfused.logbackgelf;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.encoder.LayoutWrappingEncoder;

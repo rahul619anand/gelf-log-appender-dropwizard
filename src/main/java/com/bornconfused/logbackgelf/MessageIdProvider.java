@@ -1,4 +1,4 @@
-package com.travelguru.logbackgelf;
+package com.bornconfused.logbackgelf;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

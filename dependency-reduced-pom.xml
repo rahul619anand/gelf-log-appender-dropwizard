@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.travelguru</groupId>
+  <groupId>com.bornconfused</groupId>
   <artifactId>logback-gelf</artifactId>
   <name>logback-gelf</name>
   <version>0.5</version>
@@ -106,25 +106,5 @@
       </plugin>
     </plugins>
   </build>
-  <repositories>
-    <repository>
-      <id>central</id>
-      <url>http://tools.travelguru.com/nexus/content/repositories/central/</url>
-    </repository>
-    <repository>
-      <id>travelguru-releases</id>
-      <url>http://tools.travelguru.com/nexus/content/repositories/releases/</url>
-    </repository>
-    <repository>
-      <id>thirdparty</id>
-      <url>http://tools.travelguru.com/nexus/content/repositories/thirdparty</url>
-    </repository>
-  </repositories>
-  <distributionManagement>
-    <snapshotRepository>
-      <id>nexus</id>
-      <url>http://tools.travelguru.com/nexus/content/repositories/snapshots/</url>
-    </snapshotRepository>
-  </distributionManagement>
 </project>
 

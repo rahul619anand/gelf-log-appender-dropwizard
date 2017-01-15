@@ -1,4 +1,4 @@
-package com.travelguru.logbackgelf;
+package com.bornconfused.logbackgelf;
 
 public class Field {
 

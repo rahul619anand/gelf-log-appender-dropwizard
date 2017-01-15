@@ -1,10 +1,10 @@
 <configuration>
     <!--Use TCP instead of UDP-->
-    <appender name="GELF TCP APPENDER" class="com.travelguru.logback.net.SocketEncoderAppender">
+    <appender name="GELF TCP APPENDER" class="com.bornconfused.logback.net.SocketEncoderAppender">
         <remoteHost>somehost.com</remoteHost>
         <port>12201</port>
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-            <layout class="com.travelguru.logbackgelf.GelfLayout">
+            <layout class="com.bornconfused.logbackgelf.GelfLayout">
                 <!--An example of overwriting the short message pattern-->
                 <shortMessageLayout class="ch.qos.logback.classic.PatternLayout">
                     <pattern>%ex{short}%.100m</pattern>
@@ -22,7 +22,7 @@
                 <includeFullMDC>true</includeFullMDC>
                 <fieldType>requestId:long</fieldType>
                 <!--Facility is not officially supported in GELF anymore, but you can use staticAdditionalFields to do the same thing-->
-                <staticField class="com.travelguru.logbackgelf.Field">
+                <staticField class="com.bornconfused.logbackgelf.Field">
                   <key>_facility</key>
                   <value>GELF</value>
                 </staticField>

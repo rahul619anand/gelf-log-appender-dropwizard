@@ -2,7 +2,7 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.travelguru</groupId>
+  <groupId>com.bornconfused</groupId>
   <artifactId>logback-gelf</artifactId>
   <packaging>jar</packaging>
   <version>0.6</version>
@@ -10,30 +10,6 @@
 	<url>http://maven.apache.org</url>
   <description>GELF Appender for logback. Use this appender to log messages to a graylog2 server via GELF messages.</description>
 
-  <repositories>
-  <repository>
-			<id>central</id>
-			<url>http://tools.travelguru.com/nexus/content/repositories/central/</url>
-		</repository>
-		<repository>
-			<id>travelguru-releases</id>
-			<url>http://tools.travelguru.com/nexus/content/repositories/releases/</url>
-		</repository>
-		<repository>
-			<id>thirdparty</id>
-			<url>http://tools.travelguru.com/nexus/content/repositories/thirdparty</url>
-		</repository>
-  </repositories>
-<distributionManagement>
-		<snapshotRepository>
-			<id>nexus</id>
-			<url>http://tools.travelguru.com/nexus/content/repositories/snapshots/</url>
-		</snapshotRepository>
-		<repository>
-			<id>nexus</id>
-			<url>http://tools.travelguru.com/nexus/content/repositories/releases/</url>
-		</repository>
-	</distributionManagement>
   <dependencies>
 		<dependency>
 			<groupId>io.dropwizard</groupId>
@@ -81,7 +57,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
- 
-
 </project>

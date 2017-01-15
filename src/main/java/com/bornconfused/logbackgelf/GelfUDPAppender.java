@@ -1,4 +1,4 @@
-package com.travelguru.logbackgelf;
+package com.bornconfused.logbackgelf;
 
 import ch.qos.logback.core.OutputStreamAppender;
 

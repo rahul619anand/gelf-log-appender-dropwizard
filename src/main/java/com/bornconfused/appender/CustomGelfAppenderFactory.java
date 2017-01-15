@@ -1,5 +1,5 @@
 /* Copyright 2016 Yatra.com */
-package com.travelguru.appender;
+package com.bornconfused.appender;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +8,7 @@ import java.util.TimeZone;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.travelguru.logbackgelf.GelfLayout;
+import com.bornconfused.logbackgelf.GelfLayout;
 
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.spi.ILoggingEvent;

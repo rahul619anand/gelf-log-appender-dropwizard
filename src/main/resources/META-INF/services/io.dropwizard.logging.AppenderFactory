@@ -1,4 +1,4 @@
 io.dropwizard.logging.ConsoleAppenderFactory
 io.dropwizard.logging.FileAppenderFactory
 io.dropwizard.logging.SyslogAppenderFactory
-com.travelguru.appender.CustomGelfAppenderFactory
+com.bornconfused.appender.CustomGelfAppenderFactory

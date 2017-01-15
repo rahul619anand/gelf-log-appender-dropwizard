@@ -15,12 +15,12 @@ Latest version:
 
 Gradle 
 
-	compile "com.travelguru:logback-gelf:0.6"
+	compile "com.bornconfused:logback-gelf:0.6"
 	
 Maven 
 
 	<dependency>
-	  <groupId>com.travelguru</groupId>
+	  <groupId>com.bornconfused</groupId>
 	  <artifactId>logback-gelf</artifactId>
 	  <version>0.6</version>
 	</dependency>
@@ -45,9 +45,9 @@ The minimal possible logback.xml you can write is something like.
 
 ```xml
 <configuration>
-    <appender name="GELF UDP APPENDER" class="com.travelguru.logbackgelf.GelfUDPAppender">
-        <encoder class="com.travelguru.logbackgelf.GZIPEncoder">
-            <layout class="com.travelguru.logbackgelf.GelfLayout"/>
+    <appender name="GELF UDP APPENDER" class="com.bornconfused.logbackgelf.GelfUDPAppender">
+        <encoder class="com.bornconfused.logbackgelf.GZIPEncoder">
+            <layout class="com.bornconfused.logbackgelf.GelfLayout"/>
         </encoder>
     </appender>
    <root level="debug">
@@ -62,11 +62,11 @@ default values:
 ```xml
 <configuration>
     <!--Use TCP instead of UDP-->
-    <appender name="GELF TCP APPENDER" class="com.travelguru.logback.net.SocketEncoderAppender">
+    <appender name="GELF TCP APPENDER" class="com.bornconfused.logback.net.SocketEncoderAppender">
         <remoteHost>somehost.com</remoteHost>
         <port>12201</port>
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-            <layout class="com.travelguru.logbackgelf.GelfLayout">
+            <layout class="com.bornconfused.logbackgelf.GelfLayout">
                 <!--An example of overwriting the short message pattern-->
                 <shortMessageLayout class="ch.qos.logback.classic.PatternLayout">
                     <pattern>%ex{short}%.100m</pattern>
@@ -84,7 +84,7 @@ default values:
                 <includeFullMDC>true</includeFullMDC>
                 <fieldType>requestId:long</fieldType>
                 <!--Facility is not officially supported in GELF anymore, but you can use staticFields to do the same thing-->
-                <staticField class="com.travelguru.logbackgelf.Field">
+                <staticField class="com.bornconfused.logbackgelf.Field">
                   <key>_facility</key>
                   <value>GELF</value>
                 </staticField>
@@ -100,7 +100,7 @@ default values:
 
 ## GelfLayout
 
-`com.travelguru.logbackgelf.GelfLayout`
+`com.bornconfused.logbackgelf.GelfLayout`
 
 This is where most configuration resides, since it's the part that
 actually converts a log event into a GELF compatible JSON string.
@@ -146,7 +146,7 @@ graylog transport.
 ### UDP
 
 UDP can be configured using the
-`com.travelguru.logbackgelf.GelfUDPAppender` appender. Once messages reach
+`com.bornconfused.logbackgelf.GelfUDPAppender` appender. Once messages reach
 a certain size, they will be chunked according to the
 [gelf spec](https://www.graylog.org/resources/gelf/). A maximum of
 128 chunks can be sent per log. If the encoded log is bigger than
@@ -165,12 +165,12 @@ size, this allows for 65536 bytes (64kb) total per log message
 For UDP, you have the option of Gzipping the Gelf JSON before sending
 over UDP. To do this, replace the
 `ch.qos.logback.core.encoder.LayoutWrappingEncoder` encoder with the
-`com.travelguru.logbackgelf.GZIPEncoder` encoder. E.g
+`com.bornconfused.logbackgelf.GZIPEncoder` encoder. E.g
 
 ```xml
-<appender name="GELF UDP APPENDER" class="com.travelguru.logbackgelf.GelfUDPAppender">
-    <encoder class="com.travelguru.logbackgelf.GZIPEncoder">
-        <layout class="com.travelguru.logbackgelf.GelfLayout"/>
+<appender name="GELF UDP APPENDER" class="com.bornconfused.logbackgelf.GelfUDPAppender">
+    <encoder class="com.bornconfused.logbackgelf.GZIPEncoder">
+        <layout class="com.bornconfused.logbackgelf.GelfLayout"/>
     </encoder>
 </appender>
 ```
@@ -180,7 +180,7 @@ Remember, The GZIP encoder should NOT be used with TCP
 ### TCP
 
 TCP transport can be configured using the
-`com.travelguru.logback.net.SocketEncoderAppender` appender. Unfortunately,
+`com.bornconfused.logback.net.SocketEncoderAppender` appender. Unfortunately,
 the built in Logback [Socket
 Appender](http://logback.qos.ch/manual/appenders.html#SocketAppender)
 doesn't give you control of how logs are encoded before being sent
@@ -190,10 +190,10 @@ issue](https://github.com/Graylog2/graylog2-server/issues/127), GZIP
 is not supported when using TCP.
 
 ```xml
-<appender name="GELF TCP APPENDER" class="com.travelguru.logback.net.SocketEncoderAppender">
+<appender name="GELF TCP APPENDER" class="com.bornconfused.logback.net.SocketEncoderAppender">
     <port>12201</port>
     <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-        <layout class="com.travelguru.logbackgelf.GelfLayout">
+        <layout class="com.bornconfused.logbackgelf.GelfLayout">
             ....
         </layout>
     </encoder>
@@ -237,7 +237,7 @@ org.slf4j.MDC.put("ipAddress", getClientIpAddress());
 2.  Inform logback-gelf of MDC mapping
 
 ```xml
-<layout class="com.travelguru.logbackgelf.GelfLayout">
+<layout class="com.bornconfused.logbackgelf.GelfLayout">
     <additionalField>ipAddress:_ip_address</additionalField>
 </layout>
 ```
@@ -264,12 +264,12 @@ static facility. StaticFields replace staticAdditionalFields
 E.g in the appender configuration:
 
 ```xml
-<layout class="com.travelguru.logbackgelf.GelfLayout">
-  <staticField class="com.travelguru.logbackgelf.Field">
+<layout class="com.bornconfused.logbackgelf.GelfLayout">
+  <staticField class="com.bornconfused.logbackgelf.Field">
     <key>_facility</key>
     <value>GELF</value>
   </staticField>
-  <staticField class="com.travelguru.logbackgelf.Field">
+  <staticField class="com.bornconfused.logbackgelf.Field">
     <key>_node_name</key>
     <value>www013</value>
   </staticField>
@@ -290,7 +290,7 @@ Key is the additional field key as inserted into the MDC, value is the
 type to convert to. Currently supported types are ``int``, ``long``, ``float`` and ``double``.
 
 ```xml
-<layout class="com.travelguru.logbackgelf.GelfLayout">
+<layout class="com.bornconfused.logbackgelf.GelfLayout">
     <additionalField>requestId:_request_id</additionalField>
     <fieldType>requestId:long</fieldType>
 </layout>
