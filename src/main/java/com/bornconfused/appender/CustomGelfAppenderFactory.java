@@ -1,4 +1,4 @@
-/* Copyright 2016 Yatra.com */
+
 package com.bornconfused.appender;
 
 import java.util.HashMap;
